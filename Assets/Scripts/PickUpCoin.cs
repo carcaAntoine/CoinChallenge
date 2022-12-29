@@ -10,6 +10,7 @@ public class PickUpCoin : MonoBehaviour
         {
             Debug.Log("Pièce récupérée");
             collider.gameObject.SetActive(false);
+            UIManager.AddCoinToCounter();
         }
     }
 }
