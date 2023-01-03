@@ -1596,7 +1596,6 @@ MonoBehaviour:
   jumpForce: 5
   turnSpeed: 10
   groundDistance: 0.5
-  isRunning: 0
   player: {fileID: 183528708}
 --- !u!54 &183528714
 Rigidbody:
@@ -1993,6 +1992,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 95905397883882224, guid: c647a6e9ba715004ebbf4dc6d7bd1e7a, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: a376be3ed15cb56468dbe9a7fc4e2e77, type: 2}
     - target: {fileID: 8092187238364367597, guid: c647a6e9ba715004ebbf4dc6d7bd1e7a, type: 3}
       propertyPath: m_RootOrder
       value: 4

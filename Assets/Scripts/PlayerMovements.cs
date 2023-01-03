@@ -8,22 +8,26 @@ public class PlayerMovements : MonoBehaviour
     public float jumpForce = 5;
     public float turnSpeed;
     private float horizontalInput;
-    private float forwardInput;
+    private float verticalInput;
     public float groundDistance = 0.5f;
 
-    public bool isRunning;
+    Vector3 verticalMovement;
+    Vector3 horizontalMovement;
+
+    private Animator animator;
 
     public GameObject player;
 
     private Rigidbody playerRb;
 
-    void Awake()
-    {
-        playerRb = GetComponent<Rigidbody>();
-    }
+
 
     void Start()
     {
+        playerRb = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
+
+
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
@@ -31,22 +35,24 @@ public class PlayerMovements : MonoBehaviour
     bool IsGrounded()
     {
         return Physics.Raycast(transform.position, Vector3.down, groundDistance);
+
     }
 
     void Update()
     {
         //Get Player Inputs
         horizontalInput = Input.GetAxis("Horizontal");
-        forwardInput = Input.GetAxis("Vertical");
+        verticalInput = Input.GetAxis("Vertical");
+
 
         MovePlayer();
 
         //Repop player if fall
-        if(player.transform.position.y <= -5)
+        if (player.transform.position.y <= -5)
         {
             player.transform.position = new Vector3(0, 0, 0);
         }
-        
+
 
         //Jump
         if (Input.GetKeyDown(KeyCode.Space))
@@ -54,8 +60,9 @@ public class PlayerMovements : MonoBehaviour
             if (IsGrounded())
             {
                 playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                animator.SetBool("isJumping", true);
             }
-
+            animator.SetBool("isJumping", false);
         }
 
         //Turn
@@ -65,9 +72,31 @@ public class PlayerMovements : MonoBehaviour
 
     void MovePlayer()
     {
-        //Move Player forward
-        transform.Translate(Vector3.forward * Time.deltaTime * speed * forwardInput);
-        transform.Translate(Vector3.right * Time.deltaTime * speed * horizontalInput);
+        while (Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            Debug.Log("gas gas gas");
+            float maxSpeed = speed * 2.0f;
+            verticalMovement = Vector3.forward * Time.deltaTime * maxSpeed * verticalInput;
+            horizontalMovement = Vector3.right * Time.deltaTime * maxSpeed * horizontalInput;
+        }
+        
+            verticalMovement = Vector3.forward * Time.deltaTime * speed * verticalInput;
+            horizontalMovement = Vector3.right * Time.deltaTime * speed * horizontalInput;
+        
+
+        transform.Translate(verticalMovement);
+        transform.Translate(horizontalMovement);
+
+        if (verticalMovement != Vector3.zero || horizontalMovement != Vector3.zero)
+        {
+            animator.SetBool("isMoving", true);
+            //Debug.Log("true");
+        }
+        else
+        {
+            animator.SetBool("isMoving", false);
+            //Debug.Log("false");
+        }
 
     }
 
