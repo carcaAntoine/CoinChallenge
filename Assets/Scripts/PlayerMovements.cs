@@ -60,9 +60,9 @@ public class PlayerMovements : MonoBehaviour
             if (IsGrounded())
             {
                 playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-                animator.SetBool("isJumping", true);
+                //animator.SetBool("isJumping", true);
             }
-            animator.SetBool("isJumping", false);
+            //animator.SetBool("isJumping", false);
         }
 
         //Turn

@@ -12,5 +12,12 @@ public class PickUpCoin : MonoBehaviour
             collider.gameObject.SetActive(false);
             UIManager.AddCoinToCounter();
         }
+
+        if(collider.gameObject.tag == "PrimalKey")
+        {
+            Debug.Log("Clé récupérée");
+            collider.gameObject.SetActive(false);
+            UIManager.AddKeyToCounter();
+        }
     }
 }
