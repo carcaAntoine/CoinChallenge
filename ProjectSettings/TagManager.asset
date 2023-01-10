@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Coin
   - PrimalKey
+  - Box
   layers:
   - Default
   - TransparentFX
