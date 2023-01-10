@@ -13,12 +13,11 @@ public class PlayerMovements : MonoBehaviour
 
     Vector3 verticalMovement;
     Vector3 horizontalMovement;
-
     private Animator animator;
-
     public GameObject player;
-
     private Rigidbody playerRb;
+    //public Transform cam;
+    public CharacterController characterController;
 
 
 
@@ -44,14 +43,7 @@ public class PlayerMovements : MonoBehaviour
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
 
-
         MovePlayer();
-
-        //Repop player if fall
-        if (player.transform.position.y <= -5)
-        {
-            player.transform.position = new Vector3(0, 0, 0);
-        }
 
 
         //Jump
@@ -72,13 +64,15 @@ public class PlayerMovements : MonoBehaviour
 
     void MovePlayer()
     {
-        while (Input.GetKeyDown(KeyCode.LeftControl))
+        /*while (Input.GetKeyDown(KeyCode.LeftControl))
         {
             Debug.Log("gas gas gas");
             float maxSpeed = speed * 2.0f;
             verticalMovement = Vector3.forward * Time.deltaTime * maxSpeed * verticalInput;
             horizontalMovement = Vector3.right * Time.deltaTime * maxSpeed * horizontalInput;
-        }
+        }*/
+
+        
         
             verticalMovement = Vector3.forward * Time.deltaTime * speed * verticalInput;
             horizontalMovement = Vector3.right * Time.deltaTime * speed * horizontalInput;
