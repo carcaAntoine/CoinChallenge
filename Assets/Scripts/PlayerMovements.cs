@@ -5,18 +5,21 @@ using UnityEngine;
 public class PlayerMovements : MonoBehaviour
 {
     public float speed = 5.0f;
-    public float jumpForce = 5;
+    public float jumpSpeed = 5;
     public float turnSpeed;
     private float horizontalInput;
     private float verticalInput;
     public float groundDistance = 0.5f;
+    private float ySpeed;
 
     Vector3 verticalMovement;
     Vector3 horizontalMovement;
     private Animator animator;
     public GameObject player;
     private Rigidbody playerRb;
-    //public Transform cam;
+
+    [SerializeField]
+    private Transform cameraTransform;
     public CharacterController characterController;
 
 
@@ -25,7 +28,7 @@ public class PlayerMovements : MonoBehaviour
     {
         playerRb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
-
+        characterController = GetComponent<CharacterController>();
 
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -45,41 +48,47 @@ public class PlayerMovements : MonoBehaviour
 
         MovePlayer();
 
-
-        //Jump
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (IsGrounded())
-            {
-                playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-                //animator.SetBool("isJumping", true);
-            }
-            //animator.SetBool("isJumping", false);
-        }
-
         //Turn
-        float y = Input.GetAxis("Mouse X") * turnSpeed;
-        player.transform.eulerAngles = new Vector3(0, player.transform.eulerAngles.y + y, 0);
+        /*float y = Input.GetAxis("Mouse X") * turnSpeed;
+        player.transform.eulerAngles = new Vector3(0, player.transform.eulerAngles.y + y, 0);*/
     }
 
     void MovePlayer()
     {
-        /*while (Input.GetKeyDown(KeyCode.LeftControl))
-        {
-            Debug.Log("gas gas gas");
-            float maxSpeed = speed * 2.0f;
-            verticalMovement = Vector3.forward * Time.deltaTime * maxSpeed * verticalInput;
-            horizontalMovement = Vector3.right * Time.deltaTime * maxSpeed * horizontalInput;
-        }*/
-
         
-        
-            verticalMovement = Vector3.forward * Time.deltaTime * speed * verticalInput;
-            horizontalMovement = Vector3.right * Time.deltaTime * speed * horizontalInput;
-        
+        verticalMovement = Vector3.forward * Time.deltaTime * speed * verticalInput;
+        horizontalMovement = Vector3.right * Time.deltaTime * speed * horizontalInput;
+        /*
 
         transform.Translate(verticalMovement);
-        transform.Translate(horizontalMovement);
+        transform.Translate(horizontalMovement);*/
+
+        Vector3 movementDirection = new Vector3(horizontalInput, 0, verticalInput);
+        float magnitude = Mathf.Clamp01(movementDirection.magnitude) * speed;
+        //movementDirection = Quaternion.AngleAxis(cameraTransform.rotation.eulerAngles.y, Vector3.up) * movementDirection;
+        movementDirection.Normalize();
+
+        ySpeed += Physics.gravity.y * Time.deltaTime;
+
+        //Jump
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            ySpeed = jumpSpeed;
+        }
+
+        Vector3 velocity = movementDirection * magnitude;
+        velocity.y = ySpeed;
+
+        characterController.Move(velocity * Time.deltaTime);
+
+        
+       
+
+        if(movementDirection != Vector3.zero)
+        {
+            Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, turnSpeed * Time.deltaTime);
+        }
 
         if (verticalMovement != Vector3.zero || horizontalMovement != Vector3.zero)
         {
