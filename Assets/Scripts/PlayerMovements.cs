@@ -6,7 +6,7 @@ public class PlayerMovements : MonoBehaviour
 {
     public float speed = 5.0f;
     public float jumpSpeed = 5;
-    public float turnSpeed;
+    public float rotationSpeed;
     private float horizontalInput;
     private float verticalInput;
     public float groundDistance = 0.5f;
@@ -58,15 +58,20 @@ public class PlayerMovements : MonoBehaviour
         
         verticalMovement = Vector3.forward * Time.deltaTime * speed * verticalInput;
         horizontalMovement = Vector3.right * Time.deltaTime * speed * horizontalInput;
-        /*
-
-        transform.Translate(verticalMovement);
-        transform.Translate(horizontalMovement);*/
 
         Vector3 movementDirection = new Vector3(horizontalInput, 0, verticalInput);
         float magnitude = Mathf.Clamp01(movementDirection.magnitude) * speed;
-        //movementDirection = Quaternion.AngleAxis(cameraTransform.rotation.eulerAngles.y, Vector3.up) * movementDirection;
+        movementDirection = Quaternion.AngleAxis(cameraTransform.rotation.eulerAngles.y, Vector3.up) * movementDirection;
         movementDirection.Normalize();
+
+        transform.Translate(movementDirection * speed * Time.deltaTime, Space.World);
+
+        if(movementDirection != Vector3.zero)
+        {
+            Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
+            
+        }
 
         ySpeed += Physics.gravity.y * Time.deltaTime;
 
@@ -81,15 +86,8 @@ public class PlayerMovements : MonoBehaviour
 
         characterController.Move(velocity * Time.deltaTime);
 
-        
-       
 
-        if(movementDirection != Vector3.zero)
-        {
-            Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, turnSpeed * Time.deltaTime);
-        }
-
+        //Animations
         if (verticalMovement != Vector3.zero || horizontalMovement != Vector3.zero)
         {
             animator.SetBool("isMoving", true);
