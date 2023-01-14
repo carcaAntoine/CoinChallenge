@@ -55,7 +55,7 @@ public class PlayerMovements : MonoBehaviour
 
     void MovePlayer()
     {
-        
+
         verticalMovement = Vector3.forward * Time.deltaTime * speed * verticalInput;
         horizontalMovement = Vector3.right * Time.deltaTime * speed * horizontalInput;
 
@@ -66,11 +66,11 @@ public class PlayerMovements : MonoBehaviour
 
         transform.Translate(movementDirection * speed * Time.deltaTime, Space.World);
 
-        if(movementDirection != Vector3.zero)
+        if (movementDirection != Vector3.zero)
         {
             Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, rotationSpeed * Time.deltaTime);
-            
+
         }
 
         ySpeed += Physics.gravity.y * Time.deltaTime;
@@ -78,7 +78,11 @@ public class PlayerMovements : MonoBehaviour
         //Jump
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            ySpeed = jumpSpeed;
+            if (IsGrounded())
+            {
+                ySpeed = jumpSpeed;
+            }
+
         }
 
         Vector3 velocity = movementDirection * magnitude;

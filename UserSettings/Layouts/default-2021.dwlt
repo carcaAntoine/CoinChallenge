@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1536
     height: 780.8
   m_ShowMode: 4
-  m_Title: Game
+  m_Title: Inspector
   m_RootView: {fileID: 6}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -68,8 +68,8 @@ MonoBehaviour:
     y: 0
     width: 309.59998
     height: 730.8
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 276, y: 71}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -94,8 +94,8 @@ MonoBehaviour:
     y: 0
     width: 303.2
     height: 442.4
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
@@ -428,22 +428,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts
+    - Assets
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scripts
+  - Assets
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Antoine\Documents\GitHub\CoinChallenge
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 124.600006}
-    m_SelectedIDs: 726a0000
-    m_LastClickedID: 27250
-    m_ExpandedIDs: 00000000406a0000426a0000446a000000ca9a3b
+    scrollPos: {x: 0, y: 79}
+    m_SelectedIDs: 426a0000
+    m_LastClickedID: 27202
+    m_ExpandedIDs: 00000000426a0000446a0000466a000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -471,7 +471,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000406a0000426a0000446a0000
+    m_ExpandedIDs: 00000000426a0000446a0000466a0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -499,7 +499,7 @@ MonoBehaviour:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: c6230000c2650000
+    m_ExpandedInstanceIDs: c6230000c265000000000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -515,7 +515,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 5}
+      m_ClientGUIView: {fileID: 11}
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0
@@ -562,7 +562,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 0
+  m_LastVerticalScrollValue: 184
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:
@@ -598,10 +598,10 @@ MonoBehaviour:
     m_SaveData: []
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 4e5c0000
-      m_LastClickedID: 23630
-      m_ExpandedIDs: 18fbffff4e5c0000
+      scrollPos: {x: 0, y: 227.6}
+      m_SelectedIDs: 88b2ffff
+      m_LastClickedID: -19832
+      m_ExpandedIDs: e0cbffff18fbffff746000002c630000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -850,9 +850,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0, y: 1, z: 0}
+    m_Target: {x: -7.863037, y: -2.3626893, z: 17.030485}
     speed: 2
-    m_Value: {x: 0, y: 1, z: 0}
+    m_Value: {x: -7.863037, y: -2.3626893, z: 17.030485}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -899,13 +899,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.44879302, y: -0.3246622, z: 0.17927958, w: -0.8132355}
+    m_Target: {x: -0.22741303, y: 0.6372685, z: -0.20455582, w: -0.70756537}
     speed: 2
-    m_Value: {x: -0.44872257, y: -0.32461125, z: 0.17925143, w: -0.81310785}
+    m_Value: {x: -0.22737671, y: 0.6371667, z: -0.20452316, w: -0.70745236}
   m_Size:
-    m_Target: 5.5180454
+    m_Target: 4.210925
     speed: 2
-    m_Value: 5.5180454
+    m_Value: 4.210925
   m_Ortho:
     m_Target: 0
     speed: 2
