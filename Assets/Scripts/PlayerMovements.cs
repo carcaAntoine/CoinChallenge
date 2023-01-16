@@ -48,9 +48,10 @@ public class PlayerMovements : MonoBehaviour
 
         MovePlayer();
 
-        //Turn
-        /*float y = Input.GetAxis("Mouse X") * turnSpeed;
-        player.transform.eulerAngles = new Vector3(0, player.transform.eulerAngles.y + y, 0);*/
+        if(player.transform.position.y < -5)
+        {
+            player.transform.position = new Vector3(0, 0, 0);
+        }
     }
 
     void MovePlayer()

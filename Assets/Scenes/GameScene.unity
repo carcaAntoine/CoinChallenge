@@ -2533,7 +2533,6 @@ MonoBehaviour:
   - {fileID: 905297687}
   - {fileID: 490315046}
   vectorPoint: {x: 0, y: 0, z: 0}
-  killerAltitude: 5
 --- !u!114 &143185017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3258,7 +3257,6 @@ MonoBehaviour:
   checkPoints:
   - {fileID: 515435498}
   vectorPoint: {x: 0, y: 0, z: 0}
-  killerAltitude: 5
 --- !u!114 &183528721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17022,10 +17020,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1795387926}
     m_Modifications:
+    - target: {fileID: 3417980324979066929, guid: 87bbe0176db366142a4e9aa9b246901f, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
     - target: {fileID: 3417980324979066933, guid: 87bbe0176db366142a4e9aa9b246901f, type: 3}
       propertyPath: travelTime
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 3417980324979066934, guid: 87bbe0176db366142a4e9aa9b246901f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: be84a422802f5e542890f50fae10a433, type: 2}
     - target: {fileID: 3417980325010762986, guid: 87bbe0176db366142a4e9aa9b246901f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4
@@ -19122,7 +19128,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1363867057}
-  m_LocalRotation: {x: 0.2566679, y: 0.000000022411774, z: -0.0000000059517693, w: 0.9664997}
+  m_LocalRotation: {x: 0.2566679, y: 0.00000003220378, z: -0.000000008552178, w: 0.9664997}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -23817,7 +23823,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1705056725}
-  m_LocalRotation: {x: 0.22139049, y: -0, z: -0, w: 0.9751853}
+  m_LocalRotation: {x: 0.22139049, y: 1.3e-43, z: -4.9e-44, w: 0.9751853}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
