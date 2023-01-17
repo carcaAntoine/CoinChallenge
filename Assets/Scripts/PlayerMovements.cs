@@ -7,10 +7,14 @@ public class PlayerMovements : MonoBehaviour
     public float speed = 5.0f;
     public float jumpSpeed = 5;
     public float rotationSpeed;
+    public float jumpButtonGracePeriod;
     private float horizontalInput;
     private float verticalInput;
     public float groundDistance = 0.5f;
     private float ySpeed;
+    private float? lastGroundedTime;
+    private float? jumpButtonPressedTime;
+    private float gravity = -20f;
 
     Vector3 verticalMovement;
     Vector3 horizontalMovement;
@@ -48,7 +52,7 @@ public class PlayerMovements : MonoBehaviour
 
         MovePlayer();
 
-        if(player.transform.position.y < -5)
+        if (player.transform.position.y < -5)
         {
             player.transform.position = new Vector3(0, 0, 0);
         }
@@ -77,17 +81,31 @@ public class PlayerMovements : MonoBehaviour
         ySpeed += Physics.gravity.y * Time.deltaTime;
 
         //Jump
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (IsGrounded())
         {
-            if (IsGrounded())
-            {
-                ySpeed = jumpSpeed;
-            }
-
+            lastGroundedTime = Time.time;
         }
 
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            jumpButtonPressedTime = Time.time;
+        }
+
+        if (Time.time - lastGroundedTime <= jumpButtonGracePeriod)
+        {
+            if (Time.time - jumpButtonPressedTime <= jumpButtonGracePeriod)
+            {
+                ySpeed = jumpSpeed;
+                jumpButtonPressedTime = null;
+                lastGroundedTime = null;
+            }
+        }
+
+
+
+
         Vector3 velocity = movementDirection * magnitude;
-        velocity.y = ySpeed;
+        velocity.y = ySpeed + gravity * Time.deltaTime;
 
         characterController.Move(velocity * Time.deltaTime);
 
