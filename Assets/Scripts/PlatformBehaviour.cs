@@ -10,7 +10,7 @@ public class PlatformBehaviour : MonoBehaviour
 	private Rigidbody rb;
 	private Vector3 currentPos;
 
-	CharacterController characterController;
+	//CharacterController characterController;
 
 	private void Start()
 	{
@@ -22,14 +22,15 @@ public class PlatformBehaviour : MonoBehaviour
 			Mathf.Cos(Time.time / travelTime * Mathf.PI * 2) * -.5f + .5f);
 		rb.MovePosition(currentPos);
 	}
-	private void OnTriggerEnter(Collider other)
+	/*private void OnTriggerEnter(Collider other)
 	{
 		if (other.tag == "Player")
 			characterController = other.GetComponent<CharacterController>();
-	}
+	}*/
 	private void OnTriggerStay(Collider other)
 	{
 		if (other.tag == "Player")
-			characterController.Move(rb.velocity * Time.deltaTime);
+			//characterController.Move(rb.velocity * Time.deltaTime);
+			other.GetComponent<CharacterController>().Move(rb.velocity * Time.deltaTime);
 	}
 }

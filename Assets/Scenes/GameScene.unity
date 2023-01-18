@@ -8901,7 +8901,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: d0cd72a06dcb7ab42ba67479341d60e4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8988,7 +8988,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 630398686}
-  m_LocalRotation: {x: 0.23904534, y: -7.642254e-30, z: 6.001372e-31, w: 0.9710084}
+  m_LocalRotation: {x: 0.23904534, y: -0, z: -0, w: 0.9710084}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -18019,7 +18019,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 100, y: -250}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 100, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1286367790
 MonoBehaviour:
@@ -18041,7 +18041,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: aaaba867e13f766458323d7aff81a7c4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -19217,7 +19217,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1363867057}
-  m_LocalRotation: {x: 0.25666794, y: 0.0000000144019685, z: -0.0000000038246504, w: 0.9664997}
+  m_LocalRotation: {x: 0.2566679, y: 0.000000029001464, z: -0.000000007701757, w: 0.9664997}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -22524,10 +22524,10 @@ MonoBehaviour:
   - {fileID: 1000013656696560, guid: cd34118c604e29141afea74caecd70f2, type: 3}
   - {fileID: 4009716325937776529, guid: bddde96586ad17d4490632b9a89409b2, type: 3}
   coinsEmplacements:
-  - {fileID: 131621138}
-  - {fileID: 1728810020}
-  - {fileID: 716557097}
-  - {fileID: 1468414376}
+  - {fileID: 131621139}
+  - {fileID: 1728810021}
+  - {fileID: 716557098}
+  - {fileID: 1468414377}
   Parent: {fileID: 1622748729}
 --- !u!4 &1632344531 stripped
 Transform:
@@ -23986,7 +23986,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1705056725}
-  m_LocalRotation: {x: 0.22139049, y: -0.000000009025422, z: 0.0000000020489876, w: 0.9751853}
+  m_LocalRotation: {x: 0.22139049, y: -0, z: -0, w: 0.9751853}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
