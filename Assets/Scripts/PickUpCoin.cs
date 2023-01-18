@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class PickUpCoin : MonoBehaviour
 {
-    [SerializeField]
-    private float forceMagnitude;
+    
     private void OnTriggerEnter(Collider collider)
     {
         if (collider.gameObject.tag == "Coin")
         {
             Debug.Log("Pièce récupérée");
             collider.gameObject.SetActive(false);
-            UIManager.AddCoinToCounter();
+            UIManager.AddCoinToCounter(1);
+        }
+
+        if (collider.gameObject.tag == "Diamond")
+        {
+            collider.gameObject.SetActive(false);
+            UIManager.AddCoinToCounter(5);
         }
 
         if (collider.gameObject.tag == "PrimalKey")

@@ -29,9 +29,9 @@ public class UIManager : MonoBehaviour
 
     }
 
-    public static void AddCoinToCounter()
+    public static void AddCoinToCounter(int value)
     {
-        coinValue += 1;
+        coinValue += value;
         Debug.Log("Add Coin");
         coinCounterText.text = coinValue.ToString();
     }

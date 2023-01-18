@@ -101,13 +101,11 @@ public class PlayerMovements : MonoBehaviour
             }
         }
 
-
-
-
         Vector3 velocity = movementDirection * magnitude;
         velocity.y = ySpeed + gravity * Time.deltaTime;
 
         characterController.Move(velocity * Time.deltaTime);
+
 
 
         //Animations
