@@ -9,8 +9,11 @@ public class UIManager : MonoBehaviour
 {
     //public static GameObject coinCounter;
     public static GameObject gameOverCanvas;
-    [HideInInspector]
-    public static TMP_Text coinCounterText;
+    public GameObject PauseCanvas;
+
+    public GameObject player;
+
+    [HideInInspector] public static TMP_Text coinCounterText;
     public static int coinValue;
     public static TMP_Text keyCounterText;
     public static int keyValue;
@@ -25,8 +28,19 @@ public class UIManager : MonoBehaviour
         Debug.Log("number coin : " + coinValue);
         gameOverCanvas = GameObject.Find("GameOverCanvas");
         gameOverCanvas.SetActive(false);
+        
+        PauseCanvas.SetActive(false);
 
 
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            //PauseCanvas.SetActive(true);
+            Restart();
+        }
     }
 
     public static void AddCoinToCounter(int value)
@@ -39,6 +53,15 @@ public class UIManager : MonoBehaviour
     public static void AddKeyToCounter()
     {
         keyValue += 1;
+        keyCounterText.text = keyValue.ToString();
+    }
+
+    public void Restart()
+    {
+        player.transform.position = new Vector3(0, 0, 0);
+        coinValue = 0;
+        keyValue = 0;
+        coinCounterText.text = coinValue.ToString();
         keyCounterText.text = keyValue.ToString();
     }
 

@@ -32,12 +32,14 @@ public class PlayerMovements : MonoBehaviour
     {
         playerRb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
-        characterController = GetComponent<CharacterController>();
+        //characterController = GetComponent<CharacterController>();
 
+        //Désactivation visuelle du curseur
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
 
+    //Vérifie que le Player est au sol
     bool IsGrounded()
     {
         return Physics.Raycast(transform.position, Vector3.down, groundDistance);
@@ -51,11 +53,11 @@ public class PlayerMovements : MonoBehaviour
         verticalInput = Input.GetAxis("Vertical");
 
         MovePlayer();
-
+/*
         if (player.transform.position.y < -5)
         {
             player.transform.position = new Vector3(0, 0, 0);
-        }
+        }*/
     }
 
     void MovePlayer()
@@ -104,7 +106,8 @@ public class PlayerMovements : MonoBehaviour
         Vector3 velocity = movementDirection * magnitude;
         velocity.y = ySpeed + gravity * Time.deltaTime;
 
-        characterController.Move(velocity * Time.deltaTime);
+        //characterController.Move(velocity * Time.deltaTime);
+        //transform.Translate(velocity * Time.deltaTime);
 
 
 

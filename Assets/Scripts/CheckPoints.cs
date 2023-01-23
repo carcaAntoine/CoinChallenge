@@ -7,14 +7,15 @@ public class CheckPoints : MonoBehaviour
     [SerializeField] GameObject player; 
     [SerializeField] List<GameObject> checkPoints;
     [SerializeField] Vector3 vectorPoint;
-    [SerializeField] public static float killerAltitude;
+    [SerializeField] float killerAltitude;
 
     void Update()
-    {/*
+    {
         if(player.transform.position.y < -killerAltitude)
         {
+            Debug.Log(player.transform.position.y);
             player.transform.position = vectorPoint;
-        }*/
+        }
     }
 
     public void OnTriggerEnter(Collider other)

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CoinsCreator : MonoBehaviour
+public class CoinsFactory : MonoBehaviour
 {
     public List<GameObject> coinsPrefabs = new List<GameObject>();
     public List<Transform> coinsEmplacements = new List<Transform>();

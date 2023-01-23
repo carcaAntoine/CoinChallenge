@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RotateCoin : MonoBehaviour
+public class Rotate : MonoBehaviour
 {
     public int rotateSpeed;
 

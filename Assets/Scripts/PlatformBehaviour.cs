@@ -31,6 +31,7 @@ public class PlatformBehaviour : MonoBehaviour
 	{
 		if (other.tag == "Player")
 			//characterController.Move(rb.velocity * Time.deltaTime);
-			other.GetComponent<CharacterController>().Move(rb.velocity * Time.deltaTime);
+			//other.GetComponent<CharacterController>().Move(rb.velocity * Time.deltaTime);
+			other.GetComponent<Rigidbody>().MovePosition(rb.velocity * Time.deltaTime);
 	}
 }
