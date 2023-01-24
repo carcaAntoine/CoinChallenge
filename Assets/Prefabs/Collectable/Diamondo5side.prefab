@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 23000011085638434}
   - component: {fileID: 114000010769974528}
   - component: {fileID: 8769201876591788030}
+  - component: {fileID: 3501906805470331678}
   m_Layer: 0
   m_Name: Diamondo5side
   m_TagString: Diamond
@@ -92,7 +93,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1000013656696560}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9ff967b7ed48f2441bcf509edf6b889a, type: 3}
   m_Name: 
@@ -120,5 +121,18 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.4059367, y: 2.4380145, z: 2.4853024}
-  m_Center: {x: -0.0000032782555, y: -0.0000026822097, z: -0.7140475}
+  m_Size: {x: 3, y: 3, z: 2.7082725}
+  m_Center: {x: -0.0000032782555, y: -3.768058e-15, z: -0.5681833}
+--- !u!114 &3501906805470331678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000013656696560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41056890279ca87499c3dd9c31843b67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotateSpeed: 1

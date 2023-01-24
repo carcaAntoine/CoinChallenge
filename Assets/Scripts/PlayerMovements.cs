@@ -5,16 +5,26 @@ using UnityEngine;
 public class PlayerMovements : MonoBehaviour
 {
     public float speed = 5.0f;
-    public float jumpSpeed = 5;
+    //public float jumpSpeed = 5;
     public float rotationSpeed;
     public float jumpButtonGracePeriod;
     private float horizontalInput;
     private float verticalInput;
     public float groundDistance = 0.5f;
-    private float ySpeed;
-    private float? lastGroundedTime;
-    private float? jumpButtonPressedTime;
-    private float gravity = -20f;
+    //private float ySpeed;
+    //private float? lastGroundedTime;
+    //private float? jumpButtonPressedTime;
+    //private float gravity = -20f;
+
+    //----------Jump variables-------------
+    public float jumpAmount = 7f;
+    public float gravityScale = 20f;
+    public float maxDuration = 0.3f;
+
+    private float jumpTime;
+    private bool jumping;
+
+    //------------------------------------
 
     Vector3 verticalMovement;
     Vector3 horizontalMovement;
@@ -24,7 +34,7 @@ public class PlayerMovements : MonoBehaviour
 
     [SerializeField]
     private Transform cameraTransform;
-    public CharacterController characterController;
+
 
 
 
@@ -32,7 +42,6 @@ public class PlayerMovements : MonoBehaviour
     {
         playerRb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
-        //characterController = GetComponent<CharacterController>();
 
         //Désactivation visuelle du curseur
         Cursor.visible = false;
@@ -46,6 +55,11 @@ public class PlayerMovements : MonoBehaviour
 
     }
 
+    void FixedUpdtae()
+    {
+        playerRb.AddForce(Physics.gravity * (gravityScale - 1) * playerRb.mass);
+    }
+
     void Update()
     {
         //Get Player Inputs
@@ -53,11 +67,6 @@ public class PlayerMovements : MonoBehaviour
         verticalInput = Input.GetAxis("Vertical");
 
         MovePlayer();
-/*
-        if (player.transform.position.y < -5)
-        {
-            player.transform.position = new Vector3(0, 0, 0);
-        }*/
     }
 
     void MovePlayer()
@@ -80,31 +89,59 @@ public class PlayerMovements : MonoBehaviour
 
         }
 
-        ySpeed += Physics.gravity.y * Time.deltaTime;
+        //----- Jump -----
 
-        //Jump
-        if (IsGrounded())
+        /*if (Input.GetKeyDown(KeyCode.Space))
         {
-            lastGroundedTime = Time.time;
+            jumping = true;
+            jumpTime = 0;
         }
+        if (jumping)
+        {
+            playerRb.velocity = new Vector2(playerRb.velocity.x, jumpAmount);
+            jumpTime += Time.deltaTime;
+        }
+        if (Input.GetKeyDown(KeyCode.Space) | jumpTime > maxDuration)
+        {
+            jumping = false;
+        }*/
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            jumpButtonPressedTime = Time.time;
+            playerRb.velocity = new Vector2(playerRb.velocity.x, jumpAmount);
+           
         }
 
-        if (Time.time - lastGroundedTime <= jumpButtonGracePeriod)
-        {
-            if (Time.time - jumpButtonPressedTime <= jumpButtonGracePeriod)
-            {
-                ySpeed = jumpSpeed;
-                jumpButtonPressedTime = null;
-                lastGroundedTime = null;
-            }
-        }
 
-        Vector3 velocity = movementDirection * magnitude;
-        velocity.y = ySpeed + gravity * Time.deltaTime;
+
+
+
+        /*
+                ySpeed += Physics.gravity.y * Time.deltaTime;
+
+                //Jump
+                if (IsGrounded())
+                {
+                    lastGroundedTime = Time.time;
+                }
+
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    jumpButtonPressedTime = Time.time;
+                }
+
+                if (Time.time - lastGroundedTime <= jumpButtonGracePeriod)
+                {
+                    if (Time.time - jumpButtonPressedTime <= jumpButtonGracePeriod)
+                    {
+                        ySpeed = jumpSpeed;
+                        jumpButtonPressedTime = null;
+                        lastGroundedTime = null;
+                    }
+                }
+
+                Vector3 velocity = movementDirection * magnitude;
+                velocity.y = ySpeed + gravity * Time.deltaTime;*/
 
         //characterController.Move(velocity * Time.deltaTime);
         //transform.Translate(velocity * Time.deltaTime);

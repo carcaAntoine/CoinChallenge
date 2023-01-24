@@ -438,6 +438,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wayPointPath: {fileID: 1404035953}
   speed: 1
+  targetWaypointIndex: 0
+  previousWaypoint: {fileID: 0}
+  targetWaypoint: {fileID: 0}
+  timeToWaypoint: 0
+  elapsedTime: 0
 --- !u!1 &11262855
 GameObject:
   m_ObjectHideFlags: 0
@@ -2590,13 +2595,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  jumpSpeed: 5
   rotationSpeed: 720
   jumpButtonGracePeriod: 0.2
   groundDistance: 0.5
+  jumpAmount: 6
+  gravityScale: 15
+  maxDuration: 0.3
   player: {fileID: 143185013}
   cameraTransform: {fileID: 1674610083}
-  characterController: {fileID: 0}
 --- !u!136 &143185021
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2625,7 +2631,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 72
+  m_Constraints: 112
   m_CollisionDetection: 1
 --- !u!1001 &150848775
 PrefabInstance:
@@ -8506,6 +8512,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wayPointPath: {fileID: 1481152226}
   speed: 1
+  targetWaypointIndex: 0
+  previousWaypoint: {fileID: 0}
+  targetWaypoint: {fileID: 0}
+  timeToWaypoint: 0
+  elapsedTime: 0
 --- !u!1 &579226584 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4009716325937776529, guid: bddde96586ad17d4490632b9a89409b2, type: 3}
@@ -9359,7 +9370,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 630398686}
-  m_LocalRotation: {x: 0.23904534, y: 3.4152796e-37, z: -4.0955385e-37, w: 0.9710084}
+  m_LocalRotation: {x: 0.23904534, y: -1e-45, z: -0, w: 0.9710084}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -19606,7 +19617,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1363867057}
-  m_LocalRotation: {x: 0.25666794, y: -0.0000000033791105, z: 8.9737207e-10, w: 0.9664997}
+  m_LocalRotation: {x: 0.25666794, y: 0.00000000339971, z: -9.028419e-10, w: 0.9664997}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -21241,6 +21252,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wayPointPath: {fileID: 77482855}
   speed: 1
+  targetWaypointIndex: 0
+  previousWaypoint: {fileID: 0}
+  targetWaypoint: {fileID: 0}
+  timeToWaypoint: 0
+  elapsedTime: 0
 --- !u!1001 &1485818393
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24508,7 +24524,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1705056725}
-  m_LocalRotation: {x: 0.22139049, y: -5.8679933e-16, z: 1.6778854e-16, w: 0.9751853}
+  m_LocalRotation: {x: 0.22139049, y: -0, z: -0, w: 0.9751853}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -24597,6 +24613,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wayPointPath: {fileID: 343872916}
   speed: 1
+  targetWaypointIndex: 0
+  previousWaypoint: {fileID: 0}
+  targetWaypoint: {fileID: 0}
+  timeToWaypoint: 0
+  elapsedTime: 0
 --- !u!65 &1707510303
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -28254,6 +28275,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wayPointPath: {fileID: 1914063077}
   speed: 1.5
+  targetWaypointIndex: 0
+  previousWaypoint: {fileID: 0}
+  targetWaypoint: {fileID: 0}
+  timeToWaypoint: 0
+  elapsedTime: 0
 --- !u!1001 &1993609038
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29387,6 +29413,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wayPointPath: {fileID: 1161312300}
   speed: 1
+  targetWaypointIndex: 0
+  previousWaypoint: {fileID: 0}
+  targetWaypoint: {fileID: 0}
+  timeToWaypoint: 0
+  elapsedTime: 0
 --- !u!65 &2080400460
 BoxCollider:
   m_ObjectHideFlags: 0
