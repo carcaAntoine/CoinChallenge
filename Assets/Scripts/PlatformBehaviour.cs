@@ -10,7 +10,7 @@ public class PlatformBehaviour : MonoBehaviour
 	private Rigidbody rb;
 	private Vector3 currentPos;
 
-	//CharacterController characterController;
+	private Rigidbody playerRb;
 
 	private void Start()
 	{
@@ -18,20 +18,22 @@ public class PlatformBehaviour : MonoBehaviour
 	}
 	void FixedUpdate()
 	{
-		currentPos = Vector3.Lerp(startPoint.position, endPoint.position,
-			Mathf.Cos(Time.time / travelTime * Mathf.PI * 2) * -.5f + .5f);
+		currentPos = Vector3.Lerp(startPoint.position, endPoint.position, Mathf.Cos(Time.time / travelTime * Mathf.PI * 2) * -.5f + .5f);
 		rb.MovePosition(currentPos);
 	}
-	/*private void OnTriggerEnter(Collider other)
+	private void OnTriggerEnter(Collider other)
 	{
 		if (other.tag == "Player")
-			characterController = other.GetComponent<CharacterController>();
-	}*/
+			playerRb = other.GetComponent<Rigidbody>();
+	}
 	private void OnTriggerStay(Collider other)
 	{
 		if (other.tag == "Player")
+		{
 			//characterController.Move(rb.velocity * Time.deltaTime);
 			//other.GetComponent<CharacterController>().Move(rb.velocity * Time.deltaTime);
-			other.GetComponent<Rigidbody>().MovePosition(rb.velocity * Time.deltaTime);
+			Debug.Log("Player est monté sur une plateforme");
+			//playerRb.MovePosition(rb.velocity * Time.deltaTime);
+		}
 	}
 }
