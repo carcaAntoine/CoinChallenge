@@ -8,6 +8,7 @@ TagManager:
   - PrimalKey
   - Box
   - Diamond
+  - CheckPoint
   layers:
   - Default
   - TransparentFX

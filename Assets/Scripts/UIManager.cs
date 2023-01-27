@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
     //public static GameObject coinCounter;
     public static GameObject gameOverCanvas;
     public GameObject PauseCanvas;
+    public static GameObject MessageCanvas;
 
     public GameObject player;
 
@@ -30,6 +31,9 @@ public class UIManager : MonoBehaviour
         gameOverCanvas.SetActive(false);
         
         PauseCanvas.SetActive(false);
+
+        MessageCanvas = GameObject.Find("MessageCanvas");
+        MessageCanvas.SetActive(false);
 
 
     }

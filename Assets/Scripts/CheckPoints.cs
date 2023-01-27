@@ -20,6 +20,10 @@ public class CheckPoints : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        vectorPoint = player.transform.position;
+        if(other.gameObject.tag == "CheckPoint")
+        {
+            vectorPoint = player.transform.position;
+        }
+        
     }
 }
