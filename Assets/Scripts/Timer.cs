@@ -7,10 +7,16 @@ using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
-    float currentTime;
-    public float startingTime;
+    public static Timer singleton;
+    public float currentTime; //Temps restant
+    public float startingTime; //Temps au début d'une partie
 
     [SerializeField] TMP_Text countdownText;
+
+    void Awake()
+    {
+        singleton = this;
+    }
 
     void Start()
     {
@@ -19,13 +25,23 @@ public class Timer : MonoBehaviour
 
     void Update()
     {
-        currentTime -= 1 * Time.deltaTime;
-        countdownText.text = currentTime.ToString("0");
+        if (currentTime > 0)
+        {
+            currentTime -= 1 * Time.deltaTime;
+            countdownText.text = currentTime.ToString("0");
+        }
+        else
+        {
+            Debug.Log("fin de partie");
+            UIManager.gameOverCanvas.SetActive(true);
+            UIManager.GameOver();
+        }
 
-        if(currentTime <= 0)
+
+        /*if (currentTime <= 0)
         {
             UIManager.gameOverCanvas.SetActive(true);
             currentTime = 0;
-        }
+        }*/
     }
 }

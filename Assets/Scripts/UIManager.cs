@@ -6,10 +6,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
-{
-    //public static GameObject coinCounter;
+{   
     public static GameObject gameOverCanvas;
-    public GameObject PauseCanvas;
+    public static GameObject gameOverScoreText;
     public static GameObject MessageCanvas;
 
     public GameObject player;
@@ -19,32 +18,26 @@ public class UIManager : MonoBehaviour
     public static TMP_Text keyCounterText;
     public static int keyValue;
 
+    public List<Transform> keysEmplacements = new List<Transform>(); //Contient toutes les clés pour ouvrir les portes
+    public List<Transform> pressurePlatesEmplacements = new List<Transform>(); //Contient toutes les plaques de pression pour ouvrir les portes
+
     void Awake()
     {
+        // UI Canvas
         coinCounterText = GameObject.Find("CoinCounter").GetComponent<TMP_Text>();
         coinValue = Convert.ToInt32(coinCounterText.text);
         keyCounterText = GameObject.Find("KeysCounter").GetComponent<TMP_Text>();
         keyValue = Convert.ToInt32(keyCounterText.text);
 
-        Debug.Log("number coin : " + coinValue);
+        //Game Over Canvas
+        gameOverScoreText = GameObject.Find("GameOverScoreValue");
         gameOverCanvas = GameObject.Find("GameOverCanvas");
         gameOverCanvas.SetActive(false);
-        
-        PauseCanvas.SetActive(false);
 
+        //Message Canvas
         MessageCanvas = GameObject.Find("MessageCanvas");
         MessageCanvas.SetActive(false);
 
-
-    }
-
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            //PauseCanvas.SetActive(true);
-            Restart();
-        }
     }
 
     public static void AddCoinToCounter(int value)
@@ -65,8 +58,28 @@ public class UIManager : MonoBehaviour
         player.transform.position = new Vector3(0, 0, 0);
         coinValue = 0;
         keyValue = 0;
+        Timer.singleton.currentTime = Timer.singleton.startingTime;
         coinCounterText.text = coinValue.ToString();
         keyCounterText.text = keyValue.ToString();
+
+        // Réactive les clés
+        foreach (Transform key in keysEmplacements)
+        {
+            key.gameObject.SetActive(true);
+            key.gameObject.GetComponent<OpenPath>().doorToOpen.SetActive(true); //referme également les portes ouvertes
+        }
+
+        //Réinitialise les plateformes bloquées et les plaques de pression
+        foreach(Transform pressurePlate in pressurePlatesEmplacements)
+        {
+            pressurePlate.gameObject.GetComponent<Light>().color = Color.red;
+            pressurePlate.gameObject.GetComponent<PressurePlateBehaviour>().elementToMove.transform.position = new Vector3(PressurePlateBehaviour.PressurePlateSingleton.actualX, PressurePlateBehaviour.PressurePlateSingleton.actualY, PressurePlateBehaviour.PressurePlateSingleton.actualZ);
+        }
+    }
+
+    public static void GameOver()
+    {
+        gameOverScoreText.GetComponent<TMP_Text>().text = coinValue.ToString();
     }
 
 }

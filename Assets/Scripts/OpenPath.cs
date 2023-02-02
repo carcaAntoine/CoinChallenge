@@ -4,26 +4,15 @@ using UnityEngine;
 
 public class OpenPath : MonoBehaviour
 {
-
-    public GameObject elementToMove;
+    //########## Script qui permet d'ouvrir une porte lorsque l'on récupère la clé correspondante ##########
+    public GameObject doorToOpen;
     public GameObject key;
-    public float xValue;
-    public float yValue;
-    public float zValue;
-    public bool openDoor;
+
 
     void OnTriggerEnter()
     {
         Debug.Log("Clé trouvée");
-        if (openDoor)
-        {
-            elementToMove.SetActive(false);
-        }
-        else
-        {
-            elementToMove.transform.position = new Vector3(xValue, yValue, zValue);
-        }
-
+        doorToOpen.SetActive(false);
         key.SetActive(false);
 
     }

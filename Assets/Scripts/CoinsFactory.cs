@@ -10,13 +10,17 @@ public class CoinsFactory : MonoBehaviour
     private int index;
     void Start()
     {
+        InitCoins();
+    }
+
+    public void InitCoins()
+    {
         System.Random rdn = new System.Random();
-        foreach(Transform coin in coinsEmplacements)
+        foreach (Transform coin in coinsEmplacements)
         {
             index = rdn.Next(0, coinsPrefabs.Count);
-            /*GameObject myCoin =*/ Instantiate(coinsPrefabs[index], new Vector3(coin.position.x,coin.position.y,coin.position.z), Quaternion.Euler(-90, 0, 0), Parent);
-            //myCoin.transform.SetParent(Parent);
-            
+            Instantiate(coinsPrefabs[index], new Vector3(coin.position.x, coin.position.y, coin.position.z), Quaternion.Euler(-90, 0, 0), Parent);
+
         }
     }
 
