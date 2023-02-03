@@ -11,6 +11,7 @@ public class CheckPoints : MonoBehaviour
 
     void Update()
     {
+        //Fait réapparaître le joueur s'il chute
         if(player.transform.position.y < -killerAltitude)
         {
             Debug.Log(player.transform.position.y);
@@ -18,6 +19,7 @@ public class CheckPoints : MonoBehaviour
         }
     }
 
+    //Actualise le dernier checkpoint franchi
     public void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "CheckPoint")

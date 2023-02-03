@@ -40,6 +40,7 @@ public class UIManager : MonoBehaviour
 
     }
 
+    //Augmente la valeur du score (nbre de pièces)
     public static void AddCoinToCounter(int value)
     {
         coinValue += value;
@@ -47,6 +48,7 @@ public class UIManager : MonoBehaviour
         coinCounterText.text = coinValue.ToString();
     }
 
+    //Augmente la valeur du compteur de clés
     public static void AddKeyToCounter()
     {
         keyValue += 1;

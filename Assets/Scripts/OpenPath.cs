@@ -7,6 +7,7 @@ public class OpenPath : MonoBehaviour
     //########## Script qui permet d'ouvrir une porte lorsque l'on récupère la clé correspondante ##########
     public GameObject doorToOpen;
     public GameObject key;
+    public GameObject message;
 
 
     void OnTriggerEnter()
@@ -14,6 +15,7 @@ public class OpenPath : MonoBehaviour
         Debug.Log("Clé trouvée");
         doorToOpen.SetActive(false);
         key.SetActive(false);
+        message.SetActive(false);
 
     }
 }

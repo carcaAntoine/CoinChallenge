@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlatformBehaviour : MonoBehaviour
 {
+	//########## Script qui déplace les plateformes mouvantes ##########
     public Transform startPoint;
 	public Transform endPoint;
 	public float travelTime;

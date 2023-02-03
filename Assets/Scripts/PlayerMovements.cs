@@ -4,25 +4,13 @@ using UnityEngine;
 
 public class PlayerMovements : MonoBehaviour
 {
-    public float speed = 5.0f;
-    //public float jumpSpeed = 5;
-    public float rotationSpeed;
-    public float jumpButtonGracePeriod;
     private float horizontalInput;
     private float verticalInput;
+
+    public float speed = 5.0f; //Vitesse
+    public float rotationSpeed;
     public float groundDistance = 0.5f;
-    //private float ySpeed;
-    //private float? lastGroundedTime;
-    //private float? jumpButtonPressedTime;
-    //private float gravity = -20f;
-
-    //----------Jump variables-------------
-    public float jumpAmount = 7f;
-    public float gravityScale = 20f;
-    public float maxDuration = 0.3f;
-
-    private float jumpTime;
-    private bool jumping;
+    public float jumpForce = 300; //Force de saut
 
     //------------------------------------
 
@@ -31,6 +19,7 @@ public class PlayerMovements : MonoBehaviour
     private Animator animator;
     public GameObject player;
     private Rigidbody playerRb;
+    public bool canJump = true; //Empecher le double saut    
 
     [SerializeField]
     private Transform cameraTransform;
@@ -55,11 +44,7 @@ public class PlayerMovements : MonoBehaviour
 
     }
 
-    void FixedUpdtae()
-    {
-        playerRb.AddForce(Physics.gravity * (gravityScale - 1) * playerRb.mass);
-    }
-
+    
     void Update()
     {
         //Get Player Inputs
@@ -91,61 +76,12 @@ public class PlayerMovements : MonoBehaviour
 
         //----- Jump -----
 
-        /*if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && player.transform.position.y < 0.1f && player.transform.position.y > -0.5f)
         {
-            jumping = true;
-            jumpTime = 0;
+
+            playerRb.AddForce(new Vector3(0, jumpForce, 0));
+
         }
-        if (jumping)
-        {
-            playerRb.velocity = new Vector2(playerRb.velocity.x, jumpAmount);
-            jumpTime += Time.deltaTime;
-        }
-        if (Input.GetKeyDown(KeyCode.Space) | jumpTime > maxDuration)
-        {
-            jumping = false;
-        }*/
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            playerRb.velocity = new Vector2(playerRb.velocity.x, jumpAmount);
-           
-        }
-
-
-
-
-
-        /*
-                ySpeed += Physics.gravity.y * Time.deltaTime;
-
-                //Jump
-                if (IsGrounded())
-                {
-                    lastGroundedTime = Time.time;
-                }
-
-                if (Input.GetKeyDown(KeyCode.Space))
-                {
-                    jumpButtonPressedTime = Time.time;
-                }
-
-                if (Time.time - lastGroundedTime <= jumpButtonGracePeriod)
-                {
-                    if (Time.time - jumpButtonPressedTime <= jumpButtonGracePeriod)
-                    {
-                        ySpeed = jumpSpeed;
-                        jumpButtonPressedTime = null;
-                        lastGroundedTime = null;
-                    }
-                }
-
-                Vector3 velocity = movementDirection * magnitude;
-                velocity.y = ySpeed + gravity * Time.deltaTime;*/
-
-        //characterController.Move(velocity * Time.deltaTime);
-        //transform.Translate(velocity * Time.deltaTime);
-
 
 
         //Animations

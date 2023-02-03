@@ -6,6 +6,7 @@ using TMPro;
 
 public class ShowMessage : MonoBehaviour
 {
+    //########## Script qui permet d'afficher un message dans le jeu (Utilisé principalement devant les portes fermées) ##########
     [TextArea(1, 3)] public string textToShow;
 
     void OnTriggerEnter(Collider other)

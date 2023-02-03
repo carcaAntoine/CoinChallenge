@@ -9,6 +9,7 @@ TagManager:
   - Box
   - Diamond
   - CheckPoint
+  - Ground
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - Decor
   - Water
   - UI
-  - 
+  - Player
   - 
   - 
   - 
