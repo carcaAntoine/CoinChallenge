@@ -19,13 +19,13 @@ public class PlayerMovements : MonoBehaviour
     private Animator animator;
     public GameObject player;
     private Rigidbody playerRb;
-    public bool canJump = true; //Empecher le double saut    
 
     [SerializeField]
     private Transform cameraTransform;
 
-
-
+    //------ Audio ------
+    public AudioSource walkSound;
+    //-------------------
 
     void Start()
     {
@@ -84,15 +84,17 @@ public class PlayerMovements : MonoBehaviour
         }
 
 
-        //Animations
+        //Animations & Audio
         if (verticalMovement != Vector3.zero || horizontalMovement != Vector3.zero)
         {
             animator.SetBool("isMoving", true);
+            walkSound.Play();
             //Debug.Log("true");
         }
         else
         {
             animator.SetBool("isMoving", false);
+            walkSound.Stop();
             //Debug.Log("false");
         }
 
