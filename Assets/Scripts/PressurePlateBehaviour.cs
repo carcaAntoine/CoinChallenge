@@ -8,6 +8,7 @@ public class PressurePlateBehaviour : MonoBehaviour
     //########## Script qui permet d'abaisser une plateforme lorsque l'on marche sur la plaque de pression ##########
     public static PressurePlateBehaviour PressurePlateSingleton;
     public GameObject elementToMove; //Element à déplacer pour ouvrir le chemin
+    public GameObject message; //Message d'aide à désactiver une fois le chemin ouvert
     
     public float yValue; //Valeur Y d'arrivée d'elementToMove
     
@@ -18,7 +19,7 @@ public class PressurePlateBehaviour : MonoBehaviour
     // ------------------------------
 
     bool canBeActivated = true; //pour s'assurer qu'on ne peut appuyer sur la plaque de pression qu'une fois
-    public float actualX, actualY, actualZ; //Coordonnées d'origine de la plateforme 
+    [HideInInspector] public float actualX, actualY, actualZ; //Coordonnées d'origine de la plateforme 
 
     void Awake()
     {
@@ -40,6 +41,7 @@ public class PressurePlateBehaviour : MonoBehaviour
             StartCoroutine(OpenPath());
             lt.color = greenColor;
             canBeActivated = false;
+            message.SetActive(false);
         }
 
     }
