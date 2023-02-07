@@ -74,8 +74,9 @@ public class UIManager : MonoBehaviour
         //Réinitialise les plateformes bloquées et les plaques de pression
         foreach(Transform pressurePlate in pressurePlatesEmplacements)
         {
-            pressurePlate.gameObject.GetComponent<Light>().color = Color.red;
+            pressurePlate.gameObject.transform.GetChild(0).GetComponent<Light>().color = Color.red;
             pressurePlate.gameObject.GetComponent<PressurePlateBehaviour>().elementToMove.transform.position = new Vector3(PressurePlateBehaviour.PressurePlateSingleton.actualX, PressurePlateBehaviour.PressurePlateSingleton.actualY, PressurePlateBehaviour.PressurePlateSingleton.actualZ);
+            pressurePlate.gameObject.GetComponent<PressurePlateBehaviour>().message.SetActive(true);
         }
     }
 

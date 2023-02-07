@@ -12,6 +12,8 @@ public class PlayerMovements : MonoBehaviour
     public float groundDistance = 0.5f;
     public float jumpForce = 300; //Force de saut
 
+    [HideInInspector] public static bool movementEnabled = true; //Active/Désactive les mouvements du joueur
+
     //------------------------------------
 
     Vector3 verticalMovement;
@@ -44,7 +46,7 @@ public class PlayerMovements : MonoBehaviour
 
     }
 
-    
+
     void Update()
     {
         //Get Player Inputs
@@ -56,16 +58,17 @@ public class PlayerMovements : MonoBehaviour
 
     void MovePlayer()
     {
-
         verticalMovement = Vector3.forward * Time.deltaTime * speed * verticalInput;
         horizontalMovement = Vector3.right * Time.deltaTime * speed * horizontalInput;
+        
 
         Vector3 movementDirection = new Vector3(horizontalInput, 0, verticalInput);
         float magnitude = Mathf.Clamp01(movementDirection.magnitude) * speed;
         movementDirection = Quaternion.AngleAxis(cameraTransform.rotation.eulerAngles.y, Vector3.up) * movementDirection;
         movementDirection.Normalize();
 
-        transform.Translate(movementDirection * speed * Time.deltaTime, Space.World);
+        if (movementEnabled)
+            transform.Translate(movementDirection * speed * Time.deltaTime, Space.World);
 
         if (movementDirection != Vector3.zero)
         {
@@ -76,7 +79,7 @@ public class PlayerMovements : MonoBehaviour
 
         //----- Jump -----
 
-        if (Input.GetKeyDown(KeyCode.Space) && player.transform.position.y < 0.1f && player.transform.position.y > -0.5f)
+        if (Input.GetKeyDown(KeyCode.Space) && player.transform.position.y < 0.3f && player.transform.position.y > -0.5f)
         {
 
             playerRb.AddForce(new Vector3(0, jumpForce, 0));
