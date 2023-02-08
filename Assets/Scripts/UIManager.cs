@@ -77,6 +77,7 @@ public class UIManager : MonoBehaviour
             pressurePlate.gameObject.transform.GetChild(0).GetComponent<Light>().color = Color.red;
             pressurePlate.gameObject.GetComponent<PressurePlateBehaviour>().elementToMove.transform.position = new Vector3(PressurePlateBehaviour.PressurePlateSingleton.actualX, PressurePlateBehaviour.PressurePlateSingleton.actualY, PressurePlateBehaviour.PressurePlateSingleton.actualZ);
             pressurePlate.gameObject.GetComponent<PressurePlateBehaviour>().message.SetActive(true);
+            pressurePlate.gameObject.GetComponent<PressurePlateBehaviour>().canBeActivated = true;
         }
     }
 

@@ -25,8 +25,13 @@ public class PlayerMovements : MonoBehaviour
     [SerializeField]
     private Transform cameraTransform;
 
+    private bool isMoving;
+    
+
     //------ Audio ------
     public AudioSource walkSound;
+    public AudioSource jumpSound;
+    
     //-------------------
 
     void Start()
@@ -54,13 +59,14 @@ public class PlayerMovements : MonoBehaviour
         verticalInput = Input.GetAxis("Vertical");
 
         MovePlayer();
+        
     }
 
     void MovePlayer()
     {
         verticalMovement = Vector3.forward * Time.deltaTime * speed * verticalInput;
         horizontalMovement = Vector3.right * Time.deltaTime * speed * horizontalInput;
-        
+
 
         Vector3 movementDirection = new Vector3(horizontalInput, 0, verticalInput);
         float magnitude = Mathf.Clamp01(movementDirection.magnitude) * speed;
@@ -79,9 +85,10 @@ public class PlayerMovements : MonoBehaviour
 
         //----- Jump -----
 
-        if (Input.GetKeyDown(KeyCode.Space) && player.transform.position.y < 0.3f && player.transform.position.y > -0.5f)
+        if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
         {
-
+            walkSound.Stop();
+            jumpSound.Play();
             playerRb.AddForce(new Vector3(0, jumpForce, 0));
 
         }
@@ -91,14 +98,19 @@ public class PlayerMovements : MonoBehaviour
         if (verticalMovement != Vector3.zero || horizontalMovement != Vector3.zero)
         {
             animator.SetBool("isMoving", true);
-            walkSound.Play();
-            //Debug.Log("true");
+            if(!isMoving)
+            {
+                walkSound.Play();
+                isMoving = true;
+            }
+            
+                
         }
         else
         {
             animator.SetBool("isMoving", false);
             walkSound.Stop();
-            //Debug.Log("false");
+            isMoving = false;
         }
 
     }

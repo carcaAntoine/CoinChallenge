@@ -20,14 +20,16 @@ public class PressurePlateBehaviour : MonoBehaviour
     // ------------------------------
 
     // ----------- Déplacement Camera ------------
-    public bool moveCamera;
+    public bool moveCamera; //Est-ce qu'on bouge la camera pour montrer la plateforme ?
     public GameObject cinemachine;
     public Transform playerTransform;
 
     // --------------------------------
-
-    bool canBeActivated = true; //pour s'assurer qu'on ne peut appuyer sur la plaque de pression qu'une fois
+    [HideInInspector] public bool canBeActivated = true; //pour s'assurer qu'on ne peut appuyer sur la plaque de pression qu'une fois
     [HideInInspector] public float actualX, actualY, actualZ; //Coordonnées d'origine de la plateforme 
+
+    // ----------- Audio ------------
+    public AudioSource pressurePlateSound;
 
     void Awake()
     {
@@ -54,6 +56,8 @@ public class PressurePlateBehaviour : MonoBehaviour
                 //Déplace la caméra jusqu'à la plateforme qui se déplace
                 cinemachine.GetComponent<CinemachineFreeLook>().LookAt = elementToMove.transform;
             }
+
+            pressurePlateSound.Play();
 
             //Déplacement de la plateforme
             StartCoroutine(OpenPath());
