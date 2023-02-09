@@ -21,6 +21,7 @@ public class UIManager : MonoBehaviour
     public List<Transform> keysEmplacements = new List<Transform>(); //Contient toutes les clés pour ouvrir les portes
     public List<Transform> pressurePlatesEmplacements = new List<Transform>(); //Contient toutes les plaques de pression pour ouvrir les portes
 
+
     void Awake()
     {
         // UI Canvas
@@ -57,10 +58,17 @@ public class UIManager : MonoBehaviour
 
     public void Restart()
     {
+        //Réinitialisation position player
         player.transform.position = new Vector3(0, 0, 0);
+        player.transform.rotation = Quaternion.Euler(0, 0, 0);
+
+        //Réinitialisation nbre keys & coins
         coinValue = 0;
         keyValue = 0;
+
+        //Réinitialisation Timer
         Timer.singleton.currentTime = Timer.singleton.startingTime;
+
         coinCounterText.text = coinValue.ToString();
         keyCounterText.text = keyValue.ToString();
 
@@ -79,11 +87,18 @@ public class UIManager : MonoBehaviour
             pressurePlate.gameObject.GetComponent<PressurePlateBehaviour>().message.SetActive(true);
             pressurePlate.gameObject.GetComponent<PressurePlateBehaviour>().canBeActivated = true;
         }
+
+        //Audio
+        Timer.singleton.gameOverMusic.Stop();
+        Timer.singleton.bgm.Play();
     }
 
     public static void GameOver()
     {
         gameOverScoreText.GetComponent<TMP_Text>().text = coinValue.ToString();
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        
     }
 
 }

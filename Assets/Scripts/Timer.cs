@@ -8,10 +8,14 @@ using UnityEngine.UI;
 public class Timer : MonoBehaviour
 {
     public static Timer singleton;
-    public float currentTime; //Temps restant
+    [HideInInspector]public float currentTime; //Temps restant
     public float startingTime; //Temps au début d'une partie
 
     [SerializeField] TMP_Text countdownText;
+
+    //------ Audio ------
+    public AudioSource bgm;
+    public AudioSource gameOverMusic;
 
     void Awake()
     {
@@ -34,6 +38,8 @@ public class Timer : MonoBehaviour
         {
             Debug.Log("fin de partie");
             UIManager.gameOverCanvas.SetActive(true);
+            bgm.Stop();
+            //gameOverMusic.Play();
             UIManager.GameOver();
         }
 
