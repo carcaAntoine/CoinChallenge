@@ -15,7 +15,8 @@ public class OpenPath : MonoBehaviour
         Debug.Log("Clé trouvée");
         doorToOpen.SetActive(false);
         key.SetActive(false);
-        message.SetActive(false);
+        if(message !=null)
+            message.SetActive(false);
 
     }
 }

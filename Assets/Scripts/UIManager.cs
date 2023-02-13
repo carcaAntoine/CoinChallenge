@@ -6,9 +6,10 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
-{   
+{
     public static GameObject gameOverCanvas;
     public static GameObject gameOverScoreText;
+    public static GameObject gameOverHighScoreText;
     public static GameObject MessageCanvas;
 
     public GameObject player;
@@ -32,6 +33,7 @@ public class UIManager : MonoBehaviour
 
         //Game Over Canvas
         gameOverScoreText = GameObject.Find("GameOverScoreValue");
+        gameOverHighScoreText = GameObject.Find("GameOverHighScoreValue");
         gameOverCanvas = GameObject.Find("GameOverCanvas");
         gameOverCanvas.SetActive(false);
 
@@ -80,7 +82,7 @@ public class UIManager : MonoBehaviour
         }
 
         //Réinitialise les plateformes bloquées et les plaques de pression
-        foreach(Transform pressurePlate in pressurePlatesEmplacements)
+        foreach (Transform pressurePlate in pressurePlatesEmplacements)
         {
             pressurePlate.gameObject.transform.GetChild(0).GetComponent<Light>().color = Color.red;
             pressurePlate.gameObject.GetComponent<PressurePlateBehaviour>().elementToMove.transform.position = new Vector3(PressurePlateBehaviour.PressurePlateSingleton.actualX, PressurePlateBehaviour.PressurePlateSingleton.actualY, PressurePlateBehaviour.PressurePlateSingleton.actualZ);
@@ -96,9 +98,25 @@ public class UIManager : MonoBehaviour
     public static void GameOver()
     {
         gameOverScoreText.GetComponent<TMP_Text>().text = coinValue.ToString();
+
+        //Gestion du High Score
+        if (!PlayerPrefs.HasKey("highScore")) //Création du Player Pref High Score si première partie
+        {
+            PlayerPrefs.SetInt("highScore", coinValue);
+        }
+        else //Sinon comparaison du score de la partie avec le High Score
+        {
+            if (coinValue > PlayerPrefs.GetInt("highScore"))
+            {
+                PlayerPrefs.SetInt("highScore", coinValue);
+            }
+        }
+
+        gameOverHighScoreText.GetComponent<TMP_Text>().text = PlayerPrefs.GetInt("highScore").ToString();
+
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-        
+
     }
 
 }
