@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Rotate : MonoBehaviour
 {
-    //########## Script qui permet la rotation d'un objet (pièce, clé, ...) ##########
+    //Classe qui permet la rotation d'un objet (pièce, clé, ...) 
     public int rotateSpeed;
 
     void Update()

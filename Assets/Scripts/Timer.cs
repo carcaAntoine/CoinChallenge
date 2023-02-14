@@ -39,7 +39,6 @@ public class Timer : MonoBehaviour
             Debug.Log("fin de partie");
             UIManager.gameOverCanvas.SetActive(true);
             bgm.Stop();
-            //gameOverMusic.Play();
             UIManager.GameOver();
         }
 

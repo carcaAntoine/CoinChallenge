@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CoinsFactory : MonoBehaviour
 {
-    //########## Script qui instantie toutes les pièces du niveau aléatoirement entre plusieurs prefabs ##########
+    //Classe qui instantie toutes les pièces du niveau aléatoirement entre plusieurs prefabs 
     public GameObject coinPrefab;
     public GameObject diamondPrefab;
     public int diamondProbability; //probabilité (sur 100) de voir apparaître un diamant

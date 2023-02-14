@@ -7,10 +7,10 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    public static GameObject gameOverCanvas;
+    public static GameObject gameOverCanvas; //Canvas Game Over
     public static GameObject gameOverScoreText;
     public static GameObject gameOverHighScoreText;
-    public static GameObject MessageCanvas;
+    public static GameObject MessageCanvas; //Canvas Message d'aide (devant les portes / plateformes bloquées)
 
     public GameObject player;
 
@@ -85,7 +85,7 @@ public class UIManager : MonoBehaviour
         foreach (Transform pressurePlate in pressurePlatesEmplacements)
         {
             pressurePlate.gameObject.transform.GetChild(0).GetComponent<Light>().color = Color.red;
-            pressurePlate.gameObject.GetComponent<PressurePlateBehaviour>().elementToMove.transform.position = new Vector3(PressurePlateBehaviour.PressurePlateSingleton.actualX, PressurePlateBehaviour.PressurePlateSingleton.actualY, PressurePlateBehaviour.PressurePlateSingleton.actualZ);
+            pressurePlate.gameObject.GetComponent<PressurePlateBehaviour>().elementToMove.transform.position = new Vector3(pressurePlate.gameObject.GetComponent<PressurePlateBehaviour>().actualX, pressurePlate.gameObject.GetComponent<PressurePlateBehaviour>().actualY, pressurePlate.gameObject.GetComponent<PressurePlateBehaviour>().actualZ);
             pressurePlate.gameObject.GetComponent<PressurePlateBehaviour>().message.SetActive(true);
             pressurePlate.gameObject.GetComponent<PressurePlateBehaviour>().canBeActivated = true;
         }

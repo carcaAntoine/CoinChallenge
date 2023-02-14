@@ -21,7 +21,7 @@ public class SmoothCameraFollow : MonoBehaviour
 
         Quaternion rotation = camTransform.rotation; //rotation de la camera
         Quaternion wantedRotation = lookAt.rotation; //rotation que l'on cherche à avoir (celle de l'élément à suivre)
-        /////////////////////////////////
+        
 
         position = Vector3.Lerp(position, wantedPosition, 0.03f);
         rotation = Quaternion.Lerp(rotation, wantedRotation, 0.02f);

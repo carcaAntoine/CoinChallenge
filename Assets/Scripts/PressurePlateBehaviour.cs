@@ -6,7 +6,7 @@ using Cinemachine;
 public class PressurePlateBehaviour : MonoBehaviour
 {
 
-    ////////// Script qui permet d'abaisser une plateforme lorsque l'on marche sur la plaque de pression ////////
+    //Classe qui permet d'abaisser une plateforme lorsque l'on marche sur la plaque de pression 
     public static PressurePlateBehaviour PressurePlateSingleton;
     public GameObject elementToMove; //Element à déplacer pour ouvrir le chemin
     public GameObject message; //Message d'aide à désactiver une fois le chemin ouvert
@@ -39,6 +39,7 @@ public class PressurePlateBehaviour : MonoBehaviour
     void Start()
     {
         lt.color = redColor;
+        
         actualX = elementToMove.transform.position.x;
         actualY = elementToMove.transform.position.y;
         actualZ = elementToMove.transform.position.z;
