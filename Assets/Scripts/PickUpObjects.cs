@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class PickUpObjects : MonoBehaviour
 {
-    //########## Script qui gère les évènements selon ce que le joueur récupère ##########
+    //########## Classe qui gère les évènements selon ce que le joueur récupère ##########
 
     //----------Audio----------
     public AudioSource getCoin;
     public AudioSource getDiamond;
     public AudioSource getKey;
-    //--------------------------
+    //--------------------------    
     
     private void OnTriggerEnter(Collider collider)
     {

@@ -21,6 +21,7 @@ public class UIManager : MonoBehaviour
 
     public List<Transform> keysEmplacements = new List<Transform>(); //Contient toutes les clés pour ouvrir les portes
     public List<Transform> pressurePlatesEmplacements = new List<Transform>(); //Contient toutes les plaques de pression pour ouvrir les portes
+    public List<Transform> coinsEmplacements = new List<Transform>();
 
 
     void Awake()
@@ -80,6 +81,14 @@ public class UIManager : MonoBehaviour
             key.gameObject.SetActive(true);
             key.gameObject.GetComponent<OpenPath>().doorToOpen.SetActive(true); //referme également les portes ouvertes
         }
+
+        //Détruit les pièces encore existantes, puis en recréé de nouvelles
+        for(int i = 0; i < CoinsFactory.coinFactorySingleton.Parent.childCount; i++)
+        {
+            if (CoinsFactory.coinFactorySingleton.Parent.GetChild(i).tag == "Coin" || CoinsFactory.coinFactorySingleton.Parent.GetChild(i).tag == "Diamond")
+                Destroy(CoinsFactory.coinFactorySingleton.Parent.GetChild(i).gameObject/*.SetActive(false)*/);
+        }
+        CoinsFactory.coinFactorySingleton.InitCoins();
 
         //Réinitialise les plateformes bloquées et les plaques de pression
         foreach (Transform pressurePlate in pressurePlatesEmplacements)
