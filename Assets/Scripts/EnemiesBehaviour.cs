@@ -23,10 +23,10 @@ public class EnemiesBehaviour : MonoBehaviour
     void Update()
     {
 		//Patrouille de l'ennemi
-        if (transform.position != points[currentPoint].transform.position)
+        if (transform.position.x != points[currentPoint].transform.position.x || transform.position.z != points[currentPoint].transform.position.z)
         {
 			agent.SetDestination(points[currentPoint].position);
-            //transform.position = Vector3.MoveTowards(transform.position, points[currentPoint].position, speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, points[currentPoint].position, speed * Time.deltaTime);
 			/*Vector3 lookAt = points[currentPoint].transform.position;
 			transform.rotation = Quaternion.LookRotation(lookAt, Vector3.up);*/
         }

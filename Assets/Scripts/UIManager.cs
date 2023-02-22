@@ -19,6 +19,12 @@ public class UIManager : MonoBehaviour
     public static TMP_Text keyCounterText;
     public static int keyValue;
 
+    public int pvMax;
+    [HideInInspector] public int actualPV;
+
+    public static TMP_Text pvMaxValueText;
+    public static TMP_Text actualPVValueText;
+
     public List<Transform> keysEmplacements = new List<Transform>(); //Contient toutes les clés pour ouvrir les portes
     public List<Transform> pressurePlatesEmplacements = new List<Transform>(); //Contient toutes les plaques de pression pour ouvrir les portes
     public List<Transform> coinsEmplacements = new List<Transform>();
@@ -31,6 +37,10 @@ public class UIManager : MonoBehaviour
         coinValue = Convert.ToInt32(coinCounterText.text);
         keyCounterText = GameObject.Find("KeysCounter").GetComponent<TMP_Text>();
         keyValue = Convert.ToInt32(keyCounterText.text);
+        pvMaxValueText = GameObject.Find("PVMaxValue").GetComponent<TMP_Text>();
+        actualPVValueText = GameObject.Find("PVValue").GetComponent<TMP_Text>();
+        actualPV = Convert.ToInt32(actualPVValueText.text);
+        pvMaxValueText.text = pvMax.ToString();
 
         //Game Over Canvas
         gameOverScoreText = GameObject.Find("GameOverScoreValue");
