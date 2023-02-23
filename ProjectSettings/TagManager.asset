@@ -10,6 +10,8 @@ TagManager:
   - Diamond
   - CheckPoint
   - Ground
+  - Enemy
+  - Enemy'sHead
   layers:
   - Default
   - TransparentFX

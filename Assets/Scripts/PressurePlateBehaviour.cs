@@ -52,7 +52,7 @@ public class PressurePlateBehaviour : MonoBehaviour
             if (moveCamera)
             {
                 //Désactive les mouvements du joueur
-                PlayerMovements.movementEnabled = false;
+                PlayerBehaviour.movementEnabled = false;
 
                 //Déplace la caméra jusqu'à la plateforme qui se déplace
                 cinemachine.GetComponent<CinemachineFreeLook>().LookAt = elementToMove.transform;
@@ -86,7 +86,7 @@ public class PressurePlateBehaviour : MonoBehaviour
         {
             //Replace la caméra sur le player et réactive les déplacements
             cinemachine.GetComponent<CinemachineFreeLook>().LookAt = playerTransform;
-            PlayerMovements.movementEnabled = true;
+            PlayerBehaviour.movementEnabled = true;
         }
     }
 }

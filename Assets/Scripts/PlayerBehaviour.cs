@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovements : MonoBehaviour
+public class PlayerBehaviour : MonoBehaviour
 {
     private float horizontalInput;
     private float verticalInput;
@@ -11,6 +11,8 @@ public class PlayerMovements : MonoBehaviour
     public float rotationSpeed;
     public float groundDistance = 0.5f;
     public float jumpForce = 300; //Force de saut
+    public int playerPV; //Nombre de PV au démarrage (PV Max)
+    [HideInInspector] public int playerActualPV; //Nombre de PV restants au joueur
 
     [HideInInspector] public static bool movementEnabled = true; //Active/Désactive les mouvements du joueur
 
@@ -22,8 +24,7 @@ public class PlayerMovements : MonoBehaviour
     public GameObject player;
     private Rigidbody playerRb;
 
-    [SerializeField]
-    private Transform cameraTransform;
+    [SerializeField] private Transform cameraTransform;
 
     private bool isMoving;
     
@@ -38,6 +39,8 @@ public class PlayerMovements : MonoBehaviour
     {
         playerRb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+
+        playerActualPV = playerPV;
 
         //Désactivation visuelle du curseur
         Cursor.visible = false;

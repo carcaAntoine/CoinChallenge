@@ -40,5 +40,10 @@ public class PickUpObjects : MonoBehaviour
             getKey.Play();
         }
 
+        if(collider.gameObject.tag == "Enemy'sHead")
+        {
+            Debug.Log("Aïe !");
+        }
+
     }
 }
