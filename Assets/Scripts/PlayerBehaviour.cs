@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour
 {
+    public static PlayerBehaviour playerSingleton;
     private float horizontalInput;
     private float verticalInput;
 
@@ -34,6 +35,11 @@ public class PlayerBehaviour : MonoBehaviour
     public AudioSource jumpSound;
     
     //-------------------
+
+    void Awake()
+    {
+        playerSingleton = this;
+    }
 
     void Start()
     {

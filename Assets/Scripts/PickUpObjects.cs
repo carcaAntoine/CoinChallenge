@@ -39,11 +39,5 @@ public class PickUpObjects : MonoBehaviour
             UIManager.AddKeyToCounter();
             getKey.Play();
         }
-
-        if(collider.gameObject.tag == "Enemy'sHead")
-        {
-            Debug.Log("Aïe !");
-        }
-
     }
 }

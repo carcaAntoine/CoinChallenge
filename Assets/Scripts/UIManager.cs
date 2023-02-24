@@ -19,11 +19,11 @@ public class UIManager : MonoBehaviour
     public static TMP_Text keyCounterText;
     public static int keyValue;
 
-    public int pvMax;
-    [HideInInspector] public int actualPV;
-
+    // PV UI
     public static TMP_Text pvMaxValueText;
     public static TMP_Text actualPVValueText;
+    public static RectTransform healthBar; //Barre de Vie
+    public static float healthBarWidth; //Longueur de la Barre de Vie
 
     public List<Transform> keysEmplacements = new List<Transform>(); //Contient toutes les clés pour ouvrir les portes
     public List<Transform> pressurePlatesEmplacements = new List<Transform>(); //Contient toutes les plaques de pression pour ouvrir les portes
@@ -39,8 +39,10 @@ public class UIManager : MonoBehaviour
         keyValue = Convert.ToInt32(keyCounterText.text);
         pvMaxValueText = GameObject.Find("PVMaxValue").GetComponent<TMP_Text>();
         actualPVValueText = GameObject.Find("PVValue").GetComponent<TMP_Text>();
-        actualPV = Convert.ToInt32(actualPVValueText.text);
-        pvMaxValueText.text = pvMax.ToString();
+        pvMaxValueText.text = PlayerBehaviour.playerSingleton.playerPV.ToString();
+        actualPVValueText.text = PlayerBehaviour.playerSingleton.playerPV.ToString();
+        healthBar = GameObject.Find("BarreDeVie").GetComponent<RectTransform>();
+        healthBarWidth = healthBar.sizeDelta.x;
 
         //Game Over Canvas
         gameOverScoreText = GameObject.Find("GameOverScoreValue");
@@ -67,6 +69,12 @@ public class UIManager : MonoBehaviour
     {
         keyValue += 1;
         keyCounterText.text = keyValue.ToString();
+    }
+
+    public static void LosePV(int degats)
+    {
+        actualPVValueText.text = PlayerBehaviour.playerSingleton.playerActualPV.ToString();
+        healthBar.sizeDelta = new Vector2(healthBarWidth - degats, 80);
     }
 
     public void Restart()

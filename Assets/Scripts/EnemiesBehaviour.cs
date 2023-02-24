@@ -10,6 +10,7 @@ public class EnemiesBehaviour : MonoBehaviour
     private int currentPoint; //Point de patrouille à atteindre
 	public NavMeshAgent agent;
     public float speed;
+    public int atk; //Valeur d'attaque, indique le nombre de PV de dégâts infligés 
 
     private Rigidbody enemyRb;
 
@@ -41,6 +42,17 @@ public class EnemiesBehaviour : MonoBehaviour
 				currentPoint = 0;
 			}
 
+        }
+    }
+
+    public void OnTriggerEnter(Collider collider)
+    {
+        if (collider.gameObject.tag == "Player")
+        {
+            Debug.Log("Joueur Touché");
+            PlayerBehaviour.playerSingleton.playerActualPV -= atk;
+            Debug.Log(PlayerBehaviour.playerSingleton.playerActualPV);
+            UIManager.LosePV(atk);
         }
     }
 }
