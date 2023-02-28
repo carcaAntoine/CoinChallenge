@@ -21,7 +21,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     Vector3 verticalMovement;
     Vector3 horizontalMovement;
-    private Animator animator;
+    public Animator animator;
     public GameObject player;
     private Rigidbody playerRb;
 

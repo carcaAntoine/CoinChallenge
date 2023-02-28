@@ -39,5 +39,12 @@ public class PickUpObjects : MonoBehaviour
             UIManager.AddKeyToCounter();
             getKey.Play();
         }
+
+        if (collider.gameObject.tag == "Enemy'sHead")
+        {
+            Debug.Log("Ennemi touché");
+            EnemiesBehaviour.animator.SetBool("isDead", true);
+            collider.gameObject.SetActive(false);
+        }
     }
 }

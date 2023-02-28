@@ -75,6 +75,7 @@ public class UIManager : MonoBehaviour
     {
         actualPVValueText.text = PlayerBehaviour.playerSingleton.playerActualPV.ToString();
         healthBar.sizeDelta = new Vector2(healthBarWidth - degats, 80);
+        healthBarWidth -= degats;
     }
 
     public void Restart()
