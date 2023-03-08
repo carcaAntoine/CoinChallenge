@@ -12,6 +12,7 @@ TagManager:
   - Ground
   - Enemy
   - Enemy'sHead
+  - Portal
   layers:
   - Default
   - TransparentFX

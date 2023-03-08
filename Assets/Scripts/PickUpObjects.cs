@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PickUpObjects : MonoBehaviour
 {
@@ -10,8 +11,9 @@ public class PickUpObjects : MonoBehaviour
     public AudioSource getCoin;
     public AudioSource getDiamond;
     public AudioSource getKey;
+    public GameObject playerPrefab;
     //--------------------------    
-    
+
     private void OnTriggerEnter(Collider collider)
     {
         //Si le joueur récupère une pièce
@@ -46,5 +48,20 @@ public class PickUpObjects : MonoBehaviour
             EnemiesBehaviour.animator.SetBool("isDead", true);
             collider.gameObject.SetActive(false);
         }
+
+        if (collider.gameObject.tag == "Portal")
+        {
+            LoadLevel();
+        }
+
+
     }
+
+    void LoadLevel()
+    {
+        SceneManager.LoadScene("FinalScene");
+        Instantiate(playerPrefab, new Vector3(8, 0, 8), Quaternion.identity);
+    }
+
 }
+
